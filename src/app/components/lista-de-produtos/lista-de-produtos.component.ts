@@ -9,12 +9,26 @@ import { Produto } from 'src/app/models/Produto';
 })
 export class ListaDeProdutosComponent implements OnInit {
   public produto: Produto [] = [];
+  public produtosExibidos: Produto [] = [];
 
   constructor(private http: HttpService) { 
     this.http.getProdutos().subscribe(
-      (data) => {this.produto = data;
+      (data) => {
+        this.produto = data;
+        this.produtosExibidos = data;
+
       }
     );
+  }
+  listarDoGrupo(codDoGrupo: number){
+    console.log(codDoGrupo);
+    if(codDoGrupo != 0)
+      this.produtosExibidos = this.produto.filter(
+        produto => (produto.codGrupo == codDoGrupo )
+      )
+      else {
+        this.produtosExibidos = this.produto;
+      }
   }
 
   ngOnInit(): void {
