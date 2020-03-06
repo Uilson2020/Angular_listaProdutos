@@ -29,7 +29,12 @@ export class NavComponent implements OnInit {
       ativo: false,
       label: "Contato",
       route: "/contato",
-    }
+    },
+    {
+      ativo: false,
+      label: "CadastrarProduto",
+      route: "/novo-produto",
+    },
   ]
 
   constructor() { }
